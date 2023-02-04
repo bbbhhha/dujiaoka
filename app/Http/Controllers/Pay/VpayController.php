@@ -57,6 +57,10 @@ class VpayController extends PayController
             return 'fail';
         }
         $payGateway = $this->payService->detail($order->pay_id);
+
+        if($payGateway->pay_handleroute != 'pay/vpay'){
+            return 'fail';
+        }
         if (!$payGateway) {
             return 'fail';
         }
